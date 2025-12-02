@@ -41,29 +41,54 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          Text(
-            "Change Calculator",
-            style: TextStyle(fontSize: 32, fontFamily: 'Snowy'),
-          ),
-          Padding(padding: const EdgeInsets.all(8.0), child: priceTextField()),
-          Padding(padding: const EdgeInsets.all(8.0), child: amountOfItems()),
-          Padding(padding: const EdgeInsets.all(8.0), child: calculateButton()),
-          Padding(padding: const EdgeInsets.all(8.0), child: totalDisplay()),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: receiveMoneyTextField(),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: changeCalculationButton(),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: showChangeDisplay(),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              "Change Calculator",
+              style: TextStyle(
+                fontSize: 32,
+                fontFamily: 'Snowy',
+                color: const Color.fromARGB(255, 121, 65, 206),
+                backgroundColor: const Color.fromARGB(255, 230, 218, 255),
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            Image.asset(
+              'assets/2022-Formula1-Audi-Show-Car-005-1440w.png',
+              height: 200,
+            ),
+            Image.network(
+              'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHg3eGM4OGxjcThpczVmZHlsbW5yMWU1Y3VxbXF1OTJybW9nOTdrayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/K06nw2VT3jq6Pm0BxO/giphy.gif',
+              height: 150,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: priceTextField(),
+            ),
+            const SizedBox(height: 16),
+            Padding(padding: const EdgeInsets.all(8.0), child: amountOfItems()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: calculateButton(),
+            ),
+            const SizedBox(height: 16),
+            Padding(padding: const EdgeInsets.all(8.0), child: totalDisplay()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: receiveMoneyTextField(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: changeCalculationButton(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: showChangeDisplay(),
+            ),
+          ],
+        ),
       ),
     );
   }
