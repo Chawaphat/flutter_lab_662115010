@@ -43,6 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
+          Text(
+            "Change Calculator",
+            style: TextStyle(fontSize: 32, fontFamily: 'Snowy'),
+          ),
           Padding(padding: const EdgeInsets.all(8.0), child: priceTextField()),
           Padding(padding: const EdgeInsets.all(8.0), child: amountOfItems()),
           Padding(padding: const EdgeInsets.all(8.0), child: calculateButton()),
