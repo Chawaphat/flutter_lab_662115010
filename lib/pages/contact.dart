@@ -11,7 +11,6 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    final item = List<String>.generate(100, (i) => "Item $i");
     List mydata = ['Apple', 'Banana', 'Papaya', 'Orange', 'Grapes'];
     return ListView(
       children: [
