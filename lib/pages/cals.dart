@@ -17,6 +17,7 @@ class _CalculatePageState extends State<CalculatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Calculate Page")),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cals.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -10,22 +11,28 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
-    List mydata = ['apple', 'banana', 'papaya'];
+    final item = List<String>.generate(100, (i) => "Item $i");
+    List mydata = ['Apple', 'Banana', 'Papaya', 'Orange', 'Grapes'];
     return ListView(
       children: [
-        ListTile(
-          onTap: () {},
-          leading: Icon(Icons.map),
-          title: Text(mydata[0]),
-          subtitle: Text("subtitle"),
-          trailing: FlutterLogo(),
+        ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CalculatePage(),
+                  ),
+                );
+              },
+              leading: Icon(Icons.heart_broken),
+              title: Text(mydata[index]),
+            );
+          },
+          itemCount: mydata.length,
+          shrinkWrap: true,
         ),
-        ListTile(
-          onTap: () {},
-          leading: Icon(Icons.local_movies),
-          title: Text(mydata[1]),
-        ),
-        ListTile(onTap: () {}, leading: FlutterLogo(), title: Text(mydata[2])),
       ],
     );
   }
