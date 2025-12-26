@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'detail.dart';
 
@@ -14,37 +16,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: ListView(
-          children: [
-            MyBox(
-              "What is computer?",
-              "A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically.",
-              "https://cdn.nguyenkimmall.com/images/detailed/819/cpu-amd-ryzen-la-gi.jpg",
-            ),
-            SizedBox(height: 24),
-            MyBox(
-              "What is Flutter?",
-              "Flutter is an open-source UI software development toolkit created by Google.",
-              "https://teamtweaks1-blog.s3.us-east-2.amazonaws.com/blog/wp-content/uploads/2020/12/30062049/why-choose-Flutter.png",
-            ),
-            SizedBox(height: 24),
-            MyBox(
-              "What is Dart?",
-              "Dart is a client-optimized programming language for apps on multiple platforms.",
-              "https://images.ctfassets.net/aq13lwl6616q/5VSPdnVk03aXwUG8mytiTG/33c6f1949649ee86f7eab4f0b4e4e28b/dart_programming_zero_to_mastery.png",
-            ),
-            SizedBox(height: 24),
-            TextButton(
-              onPressed: () {
-                print("next page>>");
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DetailsPage()),
+        child: FutureBuilder(
+          future: DefaultAssetBundle.of(context).loadString('assets/data.json'),
+          builder: (context, snapshot) {
+            var data = jsonDecode(snapshot.data.toString());
+
+            return ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 24.0),
+                  child: MyBox(
+                    data[index]['title'],
+                    data[index]['subtitle'],
+                    data[index]['image_url'],
+                  ),
                 );
               },
-              child: Text("read more"),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
@@ -52,10 +42,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget MyBox(String title, String subtitle, String imageUrl) {
     return Container(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       height: 350,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 213, 248, 255),
         borderRadius: BorderRadius.circular(24),
         image: DecorationImage(
           image: NetworkImage(imageUrl),
@@ -67,18 +56,52 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 25,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                subtitle,
+                style: const TextStyle(fontSize: 16, color: Colors.white70),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DetailsPage()),
+                );
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.zero,
+              ),
+              child: const Text(
+                "Read More...",
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontSize: 16,
+                ),
+              ),
             ),
           ),
-          Text(subtitle, style: TextStyle(fontSize: 18, color: Colors.white)),
         ],
       ),
     );

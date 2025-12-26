@@ -64,6 +64,7 @@ flutter:
   assets:
     - assets/2022-Formula1-Audi-Show-Car-004-1440w.png
     - assets/2022-Formula1-Audi-Show-Car-005-1440w.png
+    - assets/data.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

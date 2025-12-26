@@ -1,0 +1,17 @@
+[
+  {
+    "title": "What is computer?",
+    "subtitle": "A computer is a machine that can be programmed to carry out sequences of arithmetic or logical operations automatically.",
+    "image_url": "https://cdn.nguyenkimmall.com/images/detailed/819/cpu-amd-ryzen-la-gi.jpg"
+  },
+  {
+    "title": "What is Flutter?",
+    "subtitle": "Flutter is an open-source UI software development toolkit created by Google.",
+    "image_url": "https://teamtweaks1-blog.s3.us-east-2.amazonaws.com/blog/wp-content/uploads/2020/12/30062049/why-choose-Flutter.png"
+  },
+  {
+    "title": "What is Dart?",
+    "subtitle": "Dart is a client-optimized programming language for apps on multiple platforms.",
+    "image_url": "https://images.ctfassets.net/aq13lwl6616q/5VSPdnVk03aXwUG8mytiTG/33c6f1949649ee86f7eab4f0b4e4e28b/dart_programming_zero_to_mastery.png"
+  }
+]
