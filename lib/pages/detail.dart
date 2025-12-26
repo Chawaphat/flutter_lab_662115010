@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({super.key});
+  final v1, v2, v3, v4;
+  const DetailsPage(this.v1, this.v2, this.v3, this.v4, {super.key});
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  var _v1, _v2, _v3, _v4;
+  @override
+  void initState() {
+    super.initState();
+    _v1 = widget.v1;
+    _v2 = widget.v2;
+    _v3 = widget.v3;
+    _v4 = widget.v4;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Details Page")),
-      body: ListView(
-        children: [
-          Text("This is the Details Page", style: TextStyle(fontSize: 24)),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [Text(_v1), Text(_v2), Image.network(_v3), Text(_v4)],
+        ),
       ),
     );
   }
